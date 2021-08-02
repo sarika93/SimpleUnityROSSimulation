@@ -1,4 +1,4 @@
-using RosSharp.Urdf;
+using Unity.Robotics.UrdfImporter;
 using UnityEngine;
 
 public class RobotController : MonoBehaviour
@@ -42,7 +42,7 @@ public class RobotController : MonoBehaviour
   {
     for (int i=0; i < _numJoints; i++)
     {
-      CurrentAnglesDeg[i] = _revoluteJoints[i].GetPosition() * Mathf.Deg2Rad;
+      CurrentAnglesDeg[i] = _revoluteJoints[i].GetPosition() * Mathf.Rad2Deg;
     }
   }
 }
