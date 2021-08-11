@@ -274,6 +274,10 @@ PrefabInstance:
       propertyPath: m_ParentAnchorRotation.z
       value: 1.0000004
       objectReference: {fileID: 0}
+    - target: {fileID: 7730487747278475430, guid: 7b89ec149c65c291fb1ece228d96f5c7, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8373551801576005670, guid: 7b89ec149c65c291fb1ece228d96f5c7, type: 3}
       propertyPath: m_UseGravity
       value: 1
@@ -406,11 +410,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6dd49f332798780458818dc4c673b403, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxJointVelDeg: 0
+  ArticulationConfig:
+    Stiffness: 100000
+    Damping: 1000
+    ForceLimit: 10000
+    Torque: 0
+  MaxJointVelDeg: 2
   CurrentAnglesDeg: []
   JointGoalsDeg: []
-  _revoluteJoints: []
-  _revoluteArticulations: []
+  GoalReached: 0
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
