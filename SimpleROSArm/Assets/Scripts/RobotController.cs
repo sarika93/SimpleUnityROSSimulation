@@ -30,7 +30,11 @@ public class RobotController : MonoBehaviour
         Debug.LogError("Not a revolute joint!");
       }
     }
-    JointGoalsDeg = new float[_numJoints];
+
+    if (JointGoalsDeg == null)
+    {
+      JointGoalsDeg = new float[_numJoints];
+    }
   }
 
   [System.Serializable]
@@ -38,6 +42,7 @@ public class RobotController : MonoBehaviour
   {
     public float Stiffness;
     public float Damping;
+    // The below aren't used right now
     public float ForceLimit;
     public float Torque;
   }
@@ -55,30 +60,36 @@ public class RobotController : MonoBehaviour
     }
     _jointVelsTargetDeg = new float[_numJoints];
     CurrJointVelDeg = new float[_numJoints];
-
-    JointGoalsDeg = new float[6] { 90f, -90f, -90f, 63f, -34f, 156f };
   }
 
   private void FixedUpdate()
   {
     UpdateCurrentAnglesDeg();
     UpdateCurrentJointsVel();
-    // Updates the joint velocities if Goal not reached
+    // Updates the target joint velocities that we want
     UpdateJointsVel();
 
-    if (!GoalReached)
+    if (GoalReached)
+    {
+      return;
+    }
+    else
     {
       for (int i = 0; i < _numJoints; i++)
       {
         ArticulationDrive drive = _revoluteArticulations[i].xDrive;
         float nextTarget = drive.target + Time.fixedDeltaTime * _jointVelsTargetDeg[i];
-        if ((_jointVelsTargetDeg[i] > 0) && (Mathf.Abs(nextTarget) > Mathf.Abs(JointGoalsDeg[i])))
+        if ((_jointVelsTargetDeg[i] > 0) && (nextTarget > JointGoalsDeg[i]))
         {
           nextTarget = JointGoalsDeg[i];
         }
-        else if ((_jointVelsTargetDeg[i] < 0) && (Mathf.Abs(nextTarget) < Mathf.Abs(JointGoalsDeg[i])))
+        else if ((_jointVelsTargetDeg[i] < 0) && (nextTarget < JointGoalsDeg[i]))
         {
           nextTarget = JointGoalsDeg[i];
+        }
+        else if (_jointVelsTargetDeg[i] == 0f)
+        {
+          nextTarget = drive.target;
         }
 
         drive.target = nextTarget;
@@ -109,23 +120,21 @@ public class RobotController : MonoBehaviour
     float maxError = 0.0f;  // MaxError/MaxVel will give overall time.
     for (int i = 0; i < _numJoints; i++)
     {
-      jointErrors[i] = JointGoalsDeg[i] - CurrentAnglesDeg[i];
+      // Using target rather than current position, since the actual position 
+      // lags target, and we are using this for updating the xDrive target
+      jointErrors[i] = JointGoalsDeg[i] - _revoluteArticulations[i].xDrive.target;
       if (Mathf.Abs(jointErrors[i]) > maxError)
       {
         maxError = Mathf.Abs(jointErrors[i]);
       }
     }
 
-    if (maxError < 0.001f)
+    if (maxError <= 0.005f)
     {
       GoalReached = true;
       for (int i = 0; i < _numJoints; i++)
       {
         _jointVelsTargetDeg[i] = 0f;
-        // Goal reach so target should be current position
-        ArticulationDrive drive = _revoluteArticulations[i].xDrive;
-        drive.target = CurrentAnglesDeg[i];
-        _revoluteArticulations[i].xDrive = drive;
       }
       return;
     }
@@ -134,7 +143,7 @@ public class RobotController : MonoBehaviour
       GoalReached = false;
     }
 
-    // Some weirdness with this case. Check this out.
+    // TODO: Some weirdness with this case. Check this out.
     if (MaxJointVelDeg == 0f)
     {
       for (int i = 0; i < _numJoints; i++)
