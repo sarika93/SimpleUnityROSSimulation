@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.4465785, g: 0.49641252, b: 0.574817, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -130,38 +130,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 64737281783647387, guid: 7b89ec149c65c291fb1ece228d96f5c7, type: 3}
-      propertyPath: m_Immovable
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 64737281783647387, guid: 7b89ec149c65c291fb1ece228d96f5c7, type: 3}
-      propertyPath: m_UseGravity
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 142262235051284407, guid: 7b89ec149c65c291fb1ece228d96f5c7, type: 3}
-      propertyPath: m_UseGravity
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 142262235051284407, guid: 7b89ec149c65c291fb1ece228d96f5c7, type: 3}
-      propertyPath: m_ParentAnchorRotation.w
-      value: -0.00000003090862
-      objectReference: {fileID: 0}
-    - target: {fileID: 142262235051284407, guid: 7b89ec149c65c291fb1ece228d96f5c7, type: 3}
-      propertyPath: m_ParentAnchorRotation.x
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 142262235051284407, guid: 7b89ec149c65c291fb1ece228d96f5c7, type: 3}
-      propertyPath: m_ParentAnchorRotation.y
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 142262235051284407, guid: 7b89ec149c65c291fb1ece228d96f5c7, type: 3}
-      propertyPath: m_ParentAnchorRotation.z
-      value: -0.00000003090862
-      objectReference: {fileID: 0}
-    - target: {fileID: 2459825400621555633, guid: 7b89ec149c65c291fb1ece228d96f5c7, type: 3}
-      propertyPath: m_UseGravity
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2535298805222998953, guid: 7b89ec149c65c291fb1ece228d96f5c7, type: 3}
       propertyPath: m_Name
       value: ur5e
@@ -210,81 +178,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3762162322308435152, guid: 7b89ec149c65c291fb1ece228d96f5c7, type: 3}
-      propertyPath: m_UseGravity
-      value: 1
+    - target: {fileID: 4124385894975104864, guid: 7b89ec149c65c291fb1ece228d96f5c7, type: 3}
+      propertyPath: MaxJointVelDeg
+      value: 25
       objectReference: {fileID: 0}
-    - target: {fileID: 4171597682555781447, guid: 7b89ec149c65c291fb1ece228d96f5c7, type: 3}
-      propertyPath: m_UseGravity
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5259566795938162703, guid: 7b89ec149c65c291fb1ece228d96f5c7, type: 3}
-      propertyPath: m_UseGravity
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5259566795938162703, guid: 7b89ec149c65c291fb1ece228d96f5c7, type: 3}
-      propertyPath: m_ParentAnchorPosition.x
-      value: -0.099999994
-      objectReference: {fileID: 0}
-    - target: {fileID: 5259566795938162703, guid: 7b89ec149c65c291fb1ece228d96f5c7, type: 3}
-      propertyPath: m_ParentAnchorPosition.y
-      value: 0.00000017881393
-      objectReference: {fileID: 0}
-    - target: {fileID: 5259566795938162703, guid: 7b89ec149c65c291fb1ece228d96f5c7, type: 3}
-      propertyPath: m_ParentAnchorPosition.z
-      value: -0.0000007152558
-      objectReference: {fileID: 0}
-    - target: {fileID: 5259566795938162703, guid: 7b89ec149c65c291fb1ece228d96f5c7, type: 3}
-      propertyPath: m_ParentAnchorRotation.w
-      value: 0.5000002
-      objectReference: {fileID: 0}
-    - target: {fileID: 5259566795938162703, guid: 7b89ec149c65c291fb1ece228d96f5c7, type: 3}
-      propertyPath: m_ParentAnchorRotation.x
-      value: -0.5000002
-      objectReference: {fileID: 0}
-    - target: {fileID: 5259566795938162703, guid: 7b89ec149c65c291fb1ece228d96f5c7, type: 3}
-      propertyPath: m_ParentAnchorRotation.y
-      value: -0.5000002
-      objectReference: {fileID: 0}
-    - target: {fileID: 5259566795938162703, guid: 7b89ec149c65c291fb1ece228d96f5c7, type: 3}
-      propertyPath: m_ParentAnchorRotation.z
-      value: 0.5000002
-      objectReference: {fileID: 0}
-    - target: {fileID: 7114186453184431574, guid: 7b89ec149c65c291fb1ece228d96f5c7, type: 3}
-      propertyPath: m_UseGravity
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7114186453184431574, guid: 7b89ec149c65c291fb1ece228d96f5c7, type: 3}
-      propertyPath: m_ParentAnchorPosition.x
-      value: -0.099999994
-      objectReference: {fileID: 0}
-    - target: {fileID: 7114186453184431574, guid: 7b89ec149c65c291fb1ece228d96f5c7, type: 3}
-      propertyPath: m_ParentAnchorPosition.y
-      value: 0.00000017881393
-      objectReference: {fileID: 0}
-    - target: {fileID: 7114186453184431574, guid: 7b89ec149c65c291fb1ece228d96f5c7, type: 3}
-      propertyPath: m_ParentAnchorPosition.z
-      value: -0.0000007152558
-      objectReference: {fileID: 0}
-    - target: {fileID: 7114186453184431574, guid: 7b89ec149c65c291fb1ece228d96f5c7, type: 3}
-      propertyPath: m_ParentAnchorRotation.w
+    - target: {fileID: 4124385894975104864, guid: 7b89ec149c65c291fb1ece228d96f5c7, type: 3}
+      propertyPath: JointGoalsDeg.Array.data[3]
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7114186453184431574, guid: 7b89ec149c65c291fb1ece228d96f5c7, type: 3}
-      propertyPath: m_ParentAnchorRotation.z
-      value: 1.0000004
+    - target: {fileID: 4124385894975104864, guid: 7b89ec149c65c291fb1ece228d96f5c7, type: 3}
+      propertyPath: JointGoalsDeg.Array.data[4]
+      value: 90
       objectReference: {fileID: 0}
-    - target: {fileID: 8373551801576005670, guid: 7b89ec149c65c291fb1ece228d96f5c7, type: 3}
-      propertyPath: m_UseGravity
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8887434492135579332, guid: 7b89ec149c65c291fb1ece228d96f5c7, type: 3}
-      propertyPath: m_UseGravity
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8994418537320105551, guid: 7b89ec149c65c291fb1ece228d96f5c7, type: 3}
-      propertyPath: m_UseGravity
-      value: 1
+    - target: {fileID: 4124385894975104864, guid: 7b89ec149c65c291fb1ece228d96f5c7, type: 3}
+      propertyPath: JointGoalsDeg.Array.data[5]
+      value: 45
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7b89ec149c65c291fb1ece228d96f5c7, type: 3}
@@ -458,7 +366,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -2.53}
+  m_LocalPosition: {x: 0, y: 0.511, z: -2.53}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
