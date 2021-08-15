@@ -64,10 +64,9 @@ public class RobotController : MonoBehaviour
 
   private void FixedUpdate()
   {
-    UpdateCurrentAnglesDeg();
-    UpdateCurrentJointsVel();
+    UpdateCurrentPosVelDeg();
     // Updates the target joint velocities that we want
-    UpdateJointsVel();
+    UpdateJointVelTargets();
 
     if (GoalReached)
     {
@@ -98,23 +97,16 @@ public class RobotController : MonoBehaviour
     }
   }
 
-  private void UpdateCurrentAnglesDeg()
+  private void UpdateCurrentPosVelDeg()
   {
     for (int i = 0; i < _numJoints; i++)
     {
       CurrentAnglesDeg[i] = _revoluteJoints[i].GetPosition() * Mathf.Rad2Deg;
-    }
-  }
-
-  private void UpdateCurrentJointsVel()
-  {
-    for (int i = 0; i < _numJoints; i++)
-    {
       CurrJointVelDeg[i] = _revoluteJoints[i].GetVelocity() * Mathf.Rad2Deg;
     }
   }
 
-  private void UpdateJointsVel()
+  private void UpdateJointVelTargets()
   {
     float[] jointErrors = new float[_numJoints];
     float maxError = 0.0f;  // MaxError/MaxVel will give overall time.
@@ -160,8 +152,17 @@ public class RobotController : MonoBehaviour
 
     for (int i = 0; i < _numJoints; i++)
     {
-      //Saving the velocities we want for each joint
-      _jointVelsTargetDeg[i] = jointErrors[i] / time;
+      if (time != 0f)
+      {
+        //Saving the velocities we want for each joint
+        _jointVelsTargetDeg[i] = jointErrors[i] / time;
+      }
+      else
+      {
+        // TODO: Add in a velocity cap
+        _jointVelsTargetDeg[i] = MaxJointVelDeg; // should move as fast as allowed
+      }
+
     }
   }
 }
