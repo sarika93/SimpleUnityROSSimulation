@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Unity.Robotics.ROSTCPConnector;
+using Unity.Robotics.UrdfImporter;
 using RosMessageTypes.Sensor;
 
 public class JointStatePublisher : MonoBehaviour
@@ -32,15 +33,12 @@ public class JointStatePublisher : MonoBehaviour
     _ros = ROSConnection.instance;
     _ros.RegisterPublisher<JointStateMsg>(TopicName);
 
-     // TODO: Add in a method to grab these directly from the URDF
-     _jointNames = new string[]{
-       "shoulder_pan_joint",
-       "shoulder_lift_joint",
-       "elbow_joint",
-       "wrist_1_joint",
-       "wrist_2_joint",
-       "wrist_3_joint",
-     };
+    UrdfJointRevolute[] joints = GetComponentsInChildren<UrdfJointRevolute>();
+    _jointNames = new string[joints.Length];
+    for (int i = 0; i < joints.Length; i++)
+    {
+      _jointNames[i] = joints[i].jointName;
+    }
   }
 
   // Update is called once per frame
