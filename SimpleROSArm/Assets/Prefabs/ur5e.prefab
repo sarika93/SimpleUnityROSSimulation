@@ -915,8 +915,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: feb3bb6f28a2ea5d5b66afdb338153c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TopicName: sensor_msgs/JointState
-  Frequency_Hz: 0.5
+  TopicName: joint_states
+  Frequency_Hz: 50
 --- !u!1 &2762244826876070259
 GameObject:
   m_ObjectHideFlags: 0

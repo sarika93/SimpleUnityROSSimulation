@@ -101,8 +101,8 @@ public class RobotController : MonoBehaviour
   {
     for (int i = 0; i < _numJoints; i++)
     {
-      CurrentAnglesRad[i] = _revoluteJoints[i].GetPosition(); // * Mathf.Rad2Deg;
-      CurrJointVelRad[i] = _revoluteJoints[i].GetVelocity();  // * Mathf.Rad2Deg;
+      CurrentAnglesRad[i] = _revoluteJoints[i].GetPosition();
+      CurrJointVelRad[i] = _revoluteJoints[i].GetVelocity();
     }
   }
 

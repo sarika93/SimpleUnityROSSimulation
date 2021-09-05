@@ -8,6 +8,5 @@
     
   <node pkg="robot_state_publisher" type="robot_state_publisher" name="rob_st_pub" >
     <remap from="robot_description" to="my_robot_description" />
-    <!-- <remap from="joint_states" to="/sensor_msgs/JointState" /> -->
   </node>
 </launch>

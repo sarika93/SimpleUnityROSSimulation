@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Unity.Robotics.ROSTCPConnector;
 using Unity.Robotics.UrdfImporter;
@@ -41,11 +39,10 @@ public class JointStatePublisher : MonoBehaviour
     }
   }
 
-  // Update is called once per frame
   private void FixedUpdate()
   {
     float period = 1f/Frequency_Hz;  // time between updates
-    _elapsedTimeSecs += Time.fixedDeltaTime;  // update this to use actual time since
+    _elapsedTimeSecs += Time.fixedDeltaTime;  // TODO: Update this to use actual time since
                                               // fixedDeltaTime is not actually fixed
 
     if (_elapsedTimeSecs >= period)
@@ -55,8 +52,6 @@ public class JointStatePublisher : MonoBehaviour
       double epochTime = DateTime.Now.Subtract(new DateTime(1970, 1, 1)).TotalSeconds;
       jointState.header.stamp.sec = (uint)epochTime;
       jointState.header.stamp.nanosec = (uint)((epochTime%jointState.header.stamp.sec)* 1000000000);
-      // Debug.Log("seconds: " + (jointState.header.stamp.sec).ToString() + " nsec: " +
-      //   (jointState.header.stamp.nanosec).ToString());
       jointState.name = _jointNames;
       jointState.position = FloatToDoubleArray(_controller.CurrentAnglesRad);
       jointState.velocity = FloatToDoubleArray(_controller.CurrJointVelRad);
@@ -66,7 +61,8 @@ public class JointStatePublisher : MonoBehaviour
     }
   }
 
-  // Articulation bodies use float by default, so need to be converted.
+  // Articulation bodies use float by default, so need to be converted to double, which is used
+  // by JointStateMsg class.
   private double[] FloatToDoubleArray(float[] array)
   {
     double[] doubleArray = new double[array.Length];
