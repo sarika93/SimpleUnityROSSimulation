@@ -195,8 +195,12 @@ PrefabInstance:
       value: 45
       objectReference: {fileID: 0}
     - target: {fileID: 8330969473866756538, guid: 7b89ec149c65c291fb1ece228d96f5c7, type: 3}
+      propertyPath: TopicName
+      value: joint_states
+      objectReference: {fileID: 0}
+    - target: {fileID: 8330969473866756538, guid: 7b89ec149c65c291fb1ece228d96f5c7, type: 3}
       propertyPath: Frequency_Hz
-      value: 1
+      value: 50
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7b89ec149c65c291fb1ece228d96f5c7, type: 3}
