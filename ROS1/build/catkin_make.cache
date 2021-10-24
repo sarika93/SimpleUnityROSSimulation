@@ -1,0 +1,2 @@
+
+-DCATKIN_DEVEL_PREFIX=/home/sarika/SimpleUnityROSSimulation/ROS/devel -DCMAKE_INSTALL_PREFIX=/home/sarika/SimpleUnityROSSimulation/ROS/install -G Unix Makefiles
