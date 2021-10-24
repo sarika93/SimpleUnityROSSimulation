@@ -6,8 +6,8 @@ public class RobotController : MonoBehaviour
   public ArticulationConfiguration ArticulationConfig;
   public float MaxJointVelDeg;
   public float[] JointGoalsDeg;
-  public float[] CurrentAnglesDeg;
-  public float[] CurrJointVelDeg;    //actual velocity
+  public float[] CurrentAnglesRad;
+  public float[] CurrJointVelRad;    //actual velocity
   public bool GoalReached;
   private UrdfJointRevolute[] _revoluteJoints;
   private ArticulationBody[] _revoluteArticulations;
@@ -21,7 +21,7 @@ public class RobotController : MonoBehaviour
     _revoluteJoints = GetComponentsInChildren<UrdfJointRevolute>();
     _numJoints = _revoluteJoints.Length;
     _revoluteArticulations = new ArticulationBody[_numJoints];
-    CurrentAnglesDeg = new float[_numJoints];
+    CurrentAnglesRad = new float[_numJoints];
     for (int i = 0; i < _numJoints; i++)
     {
       _revoluteArticulations[i] = _revoluteJoints[i].GetComponent<ArticulationBody>();
@@ -59,7 +59,7 @@ public class RobotController : MonoBehaviour
       _revoluteArticulations[i].xDrive = joint;
     }
     _jointVelsTargetDeg = new float[_numJoints];
-    CurrJointVelDeg = new float[_numJoints];
+    CurrJointVelRad = new float[_numJoints];
   }
 
   private void FixedUpdate()
@@ -101,8 +101,8 @@ public class RobotController : MonoBehaviour
   {
     for (int i = 0; i < _numJoints; i++)
     {
-      CurrentAnglesDeg[i] = _revoluteJoints[i].GetPosition() * Mathf.Rad2Deg;
-      CurrJointVelDeg[i] = _revoluteJoints[i].GetVelocity() * Mathf.Rad2Deg;
+      CurrentAnglesRad[i] = _revoluteJoints[i].GetPosition();
+      CurrJointVelRad[i] = _revoluteJoints[i].GetVelocity();
     }
   }
 
@@ -112,7 +112,7 @@ public class RobotController : MonoBehaviour
     float maxError = 0.0f;  // MaxError/MaxVel will give overall time.
     for (int i = 0; i < _numJoints; i++)
     {
-      // Using target rather than current position, since the actual position 
+      // Using target rather than current position, since the actual position
       // lags target, and we are using this for updating the xDrive target
       jointErrors[i] = JointGoalsDeg[i] - _revoluteArticulations[i].xDrive.target;
       if (Mathf.Abs(jointErrors[i]) > maxError)
@@ -142,7 +142,7 @@ public class RobotController : MonoBehaviour
       {
         _jointVelsTargetDeg[i] = 0f;
         ArticulationDrive drive = _revoluteArticulations[i].xDrive;
-        drive.target = CurrentAnglesDeg[i];
+        drive.target = CurrentAnglesRad[i] * Mathf.Rad2Deg;
         _revoluteArticulations[i].xDrive = drive;
       }
       return;
@@ -162,7 +162,6 @@ public class RobotController : MonoBehaviour
         // TODO: Add in a velocity cap
         _jointVelsTargetDeg[i] = MaxJointVelDeg; // should move as fast as allowed
       }
-
     }
   }
 }
