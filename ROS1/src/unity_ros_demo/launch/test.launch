@@ -4,9 +4,11 @@
   <node name="server_endpoint" pkg="ros_tcp_endpoint" type="default_server_endpoint.py" args="--wait" output="screen" respawn="true" />
   
   <!-- Load the urdf into the parameter server. -->
-  <param name="my_robot_description" textfile="$(find ur_e_description)/urdf/ur5e.urdf"/>
+  <param name="my_robot_description" textfile="$(find unity_ros_demo)/urdf/ur5e.urdf"/>
     
   <node pkg="robot_state_publisher" type="robot_state_publisher" name="rob_st_pub" >
     <remap from="robot_description" to="my_robot_description" />
   </node>
+
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find unity_ros_demo)/rviz/ur5e_visualization.rviz"/>
 </launch>
