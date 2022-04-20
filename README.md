@@ -1,16 +1,17 @@
 # SimpleUnityROSSimulation
-Creating a simple Unity project to interface with ROS (and possibly ROS2). This is currently a work in progress as I figure out what I want to do. More details will be added later on.
+Creating a simple Unity project to interface with ROS1 (and possibly ROS2). This is currently a work in progress as I figure out what I want to do. More details will be added later on.
 
 ## Development Environment
 * OS: Ubuntu 20.04
 * Unity version: Unity 2020.3.10f1
 * ROS version: ROS Noetic
 
+## Cloning the repo
+This repository has sub-modules so you will need to run: `git clone --recurse-submodules -j8 git@github.com:sarika93/SimpleUnityROSSimulation.git`
+
 ### ROS Setup
-1. [Create](http://wiki.ros.org/catkin/Tutorials/create_a_workspace) a ROS workspace.
-2. Add the [ROS-TCP-Endpoint](https://github.com/Unity-Technologies/ROS-TCP-Endpoint) package to the src folder in your workspace.
-3. For now, the [universal_robot](https://github.com/ros-industrial/universal_robot) repository is also included in this workspace.
-4. Run `catkin_make` in the root folder of your workspace.
+1. Navigate to the ROS1 folder in this repository, which is a ROS workspace: `cd ROS1/`.
+4. Run `catkin_make` here.
 
 ## Instructions for use
 ### ROS
@@ -20,15 +21,13 @@ source /opt/ros/<distro>/setup.bash
 ```
 2. Your ROS workspace with the ros_tcp_endpoint package should also be sourced:
 ```
-source ~/path/to/ros_ws/devel/setup.sh
+source ~/path/to/ROS1/devel/setup.sh
 ```
-3. Navigate to the ROS folder in this repo and run the launch file. This folder is not a package (yet), so the exact path will need to be specified. 
+3. From any folder run the launch file: 
 ```
-roslaunch test.launch
+roslaunch unity_ros_demo test.launch
 ```
-This launches the endpoint and [robot_state_publisher](http://wiki.ros.org/robot_state_publisher) nodes.
-
-4. Launch rviz using the following command: `rosrun rviz rviz`. When RViz opens, open the ROS/ur5e_visualization.rivz file from this repo (File > Open config). 
+This launches the endpoint and [robot_state_publisher](http://wiki.ros.org/robot_state_publisher) nodes, as well as rviz. 
 
 
 ### Unity
