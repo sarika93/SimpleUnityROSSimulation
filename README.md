@@ -7,7 +7,7 @@ Creating a simple Unity project to interface with ROS1 (and possibly ROS2). This
 * ROS version: ROS Noetic
 
 ## Cloning the repo
-This repository has sub-modules so you will need to run: `git clone --recurse-submodules -j8 [INSERT LINK]`
+This repository has sub-modules so you will need to run: `git clone --recurse-submodules -j8 git@github.com:sarika93/SimpleUnityROSSimulation.git`
 
 ### ROS Setup
 1. Navigate to the ROS1 folder in this repository, which is a ROS workspace: `cd ROS1/`.
